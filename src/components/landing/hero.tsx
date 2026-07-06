@@ -8,13 +8,17 @@ import { TargetingReticle } from "./targeting-reticle";
 gsap.registerPlugin(TextPlugin);
 
 /** Characters used during the scramble decode effect */
-const SCRAMBLE_CHARS = "█▓░▒╬╠╣╦╩─│┌┐└┘◆◇○●∎ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const SCRAMBLE_CHARS =
+	"█▓░▒╬╠╣╦╩─│┌┐└┘◆◇○●∎ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 /**
  * Lightweight text-scramble hook.
  * Resolves each character one-by-one from random glyphs to the target string.
  */
-function useTextScramble(target: string, options?: { delay?: number; duration?: number }) {
+function useTextScramble(
+	target: string,
+	options?: { delay?: number; duration?: number },
+) {
 	const [display, setDisplay] = React.useState("");
 	const hasRun = React.useRef(false);
 
@@ -27,8 +31,9 @@ function useTextScramble(target: string, options?: { delay?: number; duration?: 
 		const length = target.length;
 
 		// Start with random chars
-		const chars = Array.from({ length }, () =>
-			SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)],
+		const chars = Array.from(
+			{ length },
+			() => SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)],
 		);
 		setDisplay(chars.join(""));
 
@@ -42,7 +47,10 @@ function useTextScramble(target: string, options?: { delay?: number; duration?: 
 					if (target[i] === " ") {
 						chars[i] = " ";
 					} else {
-						chars[i] = SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)] ?? "X";
+						chars[i] =
+							SCRAMBLE_CHARS[
+								Math.floor(Math.random() * SCRAMBLE_CHARS.length)
+							] ?? "X";
 					}
 				}
 				// Resolve next char
@@ -85,9 +93,9 @@ export function Hero() {
 		>
 			{/* Scan-line overlay */}
 			<div
-				ref={scanRef}
 				aria-hidden="true"
 				className="pointer-events-none absolute inset-x-0 z-10"
+				ref={scanRef}
 				style={{
 					height: "1px",
 					top: 0,
@@ -99,13 +107,16 @@ export function Hero() {
 			/>
 
 			{/* SVG noise static texture */}
-			<svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-0 w-0">
+			<svg
+				aria-hidden="true"
+				className="pointer-events-none absolute inset-0 h-0 w-0"
+			>
 				<filter id="noise">
 					<feTurbulence
-						type="fractalNoise"
 						baseFrequency="0.65"
 						numOctaves="3"
 						stitchTiles="stitch"
+						type="fractalNoise"
 					/>
 				</filter>
 			</svg>
@@ -181,8 +192,8 @@ export function Hero() {
 
 				{/* Right: targeting reticle */}
 				<div
-					className="pointer-events-none hidden flex-shrink-0 lg:block"
 					aria-hidden="true"
+					className="pointer-events-none hidden flex-shrink-0 lg:block"
 				>
 					<TargetingReticle />
 				</div>

@@ -20,10 +20,7 @@ export function Footer() {
 						>
 							Beijan
 						</a>
-						<p
-							className="text-sm"
-							style={{ color: "var(--color-muted)" }}
-						>
+						<p className="text-sm" style={{ color: "var(--color-muted)" }}>
 							Giving every machine a brain.
 						</p>
 					</div>

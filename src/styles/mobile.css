@@ -1,0 +1,163 @@
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE OVERRIDES
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+	.hero-title h1 {
+		font-size: clamp(48px, 8vw, 80px);
+	}
+	.about-grid {
+		grid-template-columns: 1fr;
+	}
+	.about-left,
+	.about-right {
+		padding: 32px 0;
+		border-right: none;
+		border-bottom: 1px solid var(--line);
+	}
+	.about-right::before {
+		display: none;
+	}
+	#tactical {
+		grid-template-columns: 1fr;
+		display: flex;
+		flex-direction: column;
+	}
+	.tac-left,
+	.tac-right {
+		padding: 60px 24px;
+	}
+	.products-header {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+	.platform-two-col {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+	.contact-grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+	.footer-bottom {
+		flex-direction: column;
+		gap: 32px;
+		align-items: flex-start;
+	}
+	.footer-right {
+		flex-direction: column;
+		gap: 16px;
+		align-items: flex-start;
+	}
+}
+
+@media (max-width: 768px) {
+	nav {
+		padding: 16px 20px;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
+	}
+	.nav-links {
+		width: 100%;
+		overflow-x: auto;
+		white-space: nowrap;
+		padding-bottom: 8px;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+	}
+	.nav-links::-webkit-scrollbar {
+		display: none;
+	}
+
+	#hero {
+		padding: 140px 20px 40px;
+	}
+	.hero-title {
+		padding-left: 0;
+	}
+	.hero-title::before {
+		display: none;
+	}
+	.hero-radar {
+		width: 280px;
+		height: 280px;
+		right: -50px;
+		opacity: 0.1;
+	}
+	.hero-coords,
+	.hero-rng {
+		right: 20px;
+	}
+	.telemetry-stream {
+		left: 20px;
+	}
+
+	.slide-body {
+		grid-template-columns: 1fr;
+		overflow-y: auto;
+		padding-bottom: 40px;
+	}
+	.slide-body-left,
+	.slide-body-center,
+	.slide-body-right {
+		border: none;
+		border-bottom: 1px solid var(--line);
+		padding: 24px 20px;
+	}
+	.slide-body-right {
+		border-bottom: none;
+	}
+	.slide-acronym {
+		font-size: clamp(60px, 15vw, 100px);
+	}
+	.slide-title-banner {
+		padding: 0 20px;
+	}
+
+	.tac-specs-bar {
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+	.tac-callout {
+		transform: translate(-50%, -120px) !important;
+		left: 50% !important;
+	}
+
+	.stat-block,
+	.culture-block {
+		grid-template-columns: 1fr;
+	}
+	.stat {
+		border-right: none;
+		border-bottom: 1px solid var(--line);
+		padding: 24px 0;
+	}
+	.stat:last-child {
+		border-bottom: none;
+		padding-left: 0;
+	}
+
+	.eco-steps {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+	.eco-step {
+		border-left: none;
+		border-top: 1px solid var(--line);
+		padding: 16px 0 0 0;
+	}
+	.eco-step:first-child {
+		border-top: none;
+		padding-top: 0;
+	}
+
+	#products-scroll-container {
+		height: 400vh;
+	}
+
+	/* Disable custom cursor entirely on mobile */
+	#cursor {
+		display: none !important;
+	}
+}

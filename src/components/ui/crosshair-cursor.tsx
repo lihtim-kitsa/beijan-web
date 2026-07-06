@@ -39,9 +39,9 @@ export function CrosshairCursor() {
 
 	return (
 		<div
-			ref={cursorRef}
 			aria-hidden="true"
 			className="pointer-events-none fixed z-[9999]"
+			ref={cursorRef}
 			style={{
 				top: 0,
 				left: 0,
@@ -53,67 +53,69 @@ export function CrosshairCursor() {
 			<svg
 				className="pointer-events-none"
 				height={size}
-				width={size}
-				viewBox={`0 0 ${size} ${size}`}
 				style={{
 					position: "absolute",
 					top: -half,
 					left: -half,
 					overflow: "visible",
 				}}
+				viewBox={`0 0 ${size} ${size}`}
+				width={size}
 			>
 				{/* Outer ring */}
 				<circle
 					cx={half}
 					cy={half}
-					r={14}
 					fill="none"
+					opacity="0.5"
+					r={14}
 					stroke={strokeColor}
 					strokeWidth="1"
-					opacity="0.5"
 				/>
 
 				{/* Top line */}
 				<line
-					x1={half} y1={0}
-					x2={half} y2={half - gap}
+					opacity="0.9"
 					stroke={strokeColor}
 					strokeWidth="1.5"
-					opacity="0.9"
+					x1={half}
+					x2={half}
+					y1={0}
+					y2={half - gap}
 				/>
 				{/* Bottom line */}
 				<line
-					x1={half} y1={half + gap}
-					x2={half} y2={size}
+					opacity="0.9"
 					stroke={strokeColor}
 					strokeWidth="1.5"
-					opacity="0.9"
+					x1={half}
+					x2={half}
+					y1={half + gap}
+					y2={size}
 				/>
 				{/* Left line */}
 				<line
-					x1={0} y1={half}
-					x2={half - gap} y2={half}
+					opacity="0.9"
 					stroke={strokeColor}
 					strokeWidth="1.5"
-					opacity="0.9"
+					x1={0}
+					x2={half - gap}
+					y1={half}
+					y2={half}
 				/>
 				{/* Right line */}
 				<line
-					x1={half + gap} y1={half}
-					x2={size} y2={half}
+					opacity="0.9"
 					stroke={strokeColor}
 					strokeWidth="1.5"
-					opacity="0.9"
+					x1={half + gap}
+					x2={size}
+					y1={half}
+					y2={half}
 				/>
 
 				{/* Center dot */}
-				<circle
-					cx={half}
-					cy={half}
-					r={1.5}
-					fill={strokeColor}
-					opacity="0.8"
-				/>
+				<circle cx={half} cy={half} fill={strokeColor} opacity="0.8" r={1.5} />
 			</svg>
 		</div>
 	);

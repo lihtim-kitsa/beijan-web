@@ -34,14 +34,26 @@ export function TargetingReticle() {
 		>
 			<svg
 				className="block"
+				fill="none"
+				height={size}
 				viewBox={`0 0 ${size} ${size}`}
 				width={size}
-				height={size}
-				fill="none"
 			>
 				{/* ── Outer ring — slow rotate ── */}
-				<g style={{ transformOrigin: "50% 50%", animation: "reticle-spin 25s linear infinite" }}>
-					<circle cx={cx} cy={cy} r={190} stroke={muted} strokeWidth="0.5" opacity="0.3" />
+				<g
+					style={{
+						transformOrigin: "50% 50%",
+						animation: "reticle-spin 25s linear infinite",
+					}}
+				>
+					<circle
+						cx={cx}
+						cy={cy}
+						opacity="0.3"
+						r={190}
+						stroke={muted}
+						strokeWidth="0.5"
+					/>
 					{/* Tick marks on outer ring */}
 					{Array.from({ length: 72 }).map((_, i) => {
 						const angle = (i * 5 * Math.PI) / 180;
@@ -51,34 +63,47 @@ export function TargetingReticle() {
 						return (
 							<line
 								key={`ot-${i}`}
-								x1={cx + r1 * Math.cos(angle)}
-								y1={cy + r1 * Math.sin(angle)}
-								x2={cx + r2 * Math.cos(angle)}
-								y2={cy + r2 * Math.sin(angle)}
+								opacity={isMajor ? "0.4" : "0.2"}
 								stroke={isMajor ? fg : muted}
 								strokeWidth={isMajor ? "1" : "0.5"}
-								opacity={isMajor ? "0.4" : "0.2"}
+								x1={cx + r1 * Math.cos(angle)}
+								x2={cx + r2 * Math.cos(angle)}
+								y1={cy + r1 * Math.sin(angle)}
+								y2={cy + r2 * Math.sin(angle)}
 							/>
 						);
 					})}
 				</g>
 
 				{/* ── Middle ring — counter rotate ── */}
-				<g style={{ transformOrigin: "50% 50%", animation: "reticle-spin-reverse 18s linear infinite" }}>
-					<circle cx={cx} cy={cy} r={140} stroke={accent} strokeWidth="0.5" opacity="0.25" strokeDasharray="4 8" />
+				<g
+					style={{
+						transformOrigin: "50% 50%",
+						animation: "reticle-spin-reverse 18s linear infinite",
+					}}
+				>
+					<circle
+						cx={cx}
+						cy={cy}
+						opacity="0.25"
+						r={140}
+						stroke={accent}
+						strokeDasharray="4 8"
+						strokeWidth="0.5"
+					/>
 					{/* Cardinal indicators */}
 					{[0, 90, 180, 270].map((deg) => {
 						const rad = (deg * Math.PI) / 180;
 						return (
 							<g key={`card-${deg}`}>
 								<line
-									x1={cx + 130 * Math.cos(rad)}
-									y1={cy + 130 * Math.sin(rad)}
-									x2={cx + 145 * Math.cos(rad)}
-									y2={cy + 145 * Math.sin(rad)}
+									opacity="0.5"
 									stroke={accent}
 									strokeWidth="1.5"
-									opacity="0.5"
+									x1={cx + 130 * Math.cos(rad)}
+									x2={cx + 145 * Math.cos(rad)}
+									y1={cy + 130 * Math.sin(rad)}
+									y2={cy + 145 * Math.sin(rad)}
 								/>
 							</g>
 						);
@@ -86,55 +111,143 @@ export function TargetingReticle() {
 				</g>
 
 				{/* ── Inner ring — static ── */}
-				<circle cx={cx} cy={cy} r={90} stroke={fg} strokeWidth="0.5" opacity="0.15" />
+				<circle
+					cx={cx}
+					cy={cy}
+					opacity="0.15"
+					r={90}
+					stroke={fg}
+					strokeWidth="0.5"
+				/>
 
 				{/* ── Scanning arc ── */}
-				<g style={{ transformOrigin: "50% 50%", animation: "reticle-spin 4s linear infinite" }}>
+				<g
+					style={{
+						transformOrigin: "50% 50%",
+						animation: "reticle-spin 4s linear infinite",
+					}}
+				>
 					<path
 						d={`M ${cx} ${cy} L ${cx + 90} ${cy} A 90 90 0 0 1 ${cx + 90 * Math.cos(Math.PI / 6)} ${cy + 90 * Math.sin(Math.PI / 6)} Z`}
 						fill={accent}
 						opacity="0.06"
 					/>
 					<line
-						x1={cx}
-						y1={cy}
-						x2={cx + 90}
-						y2={cy}
+						opacity="0.4"
 						stroke={accent}
 						strokeWidth="1"
-						opacity="0.4"
+						x1={cx}
+						x2={cx + 90}
+						y1={cy}
+						y2={cy}
 					/>
 				</g>
 
 				{/* ── Center crosshair ── */}
-				<line x1={cx - 20} y1={cy} x2={cx - 6} y2={cy} stroke={accent} strokeWidth="1" opacity="0.7" />
-				<line x1={cx + 6} y1={cy} x2={cx + 20} y2={cy} stroke={accent} strokeWidth="1" opacity="0.7" />
-				<line x1={cx} y1={cy - 20} x2={cx} y2={cy - 6} stroke={accent} strokeWidth="1" opacity="0.7" />
-				<line x1={cx} y1={cy + 6} x2={cx} y2={cy + 20} stroke={accent} strokeWidth="1" opacity="0.7" />
-				<circle cx={cx} cy={cy} r={2} fill={accent} opacity="0.6" />
+				<line
+					opacity="0.7"
+					stroke={accent}
+					strokeWidth="1"
+					x1={cx - 20}
+					x2={cx - 6}
+					y1={cy}
+					y2={cy}
+				/>
+				<line
+					opacity="0.7"
+					stroke={accent}
+					strokeWidth="1"
+					x1={cx + 6}
+					x2={cx + 20}
+					y1={cy}
+					y2={cy}
+				/>
+				<line
+					opacity="0.7"
+					stroke={accent}
+					strokeWidth="1"
+					x1={cx}
+					x2={cx}
+					y1={cy - 20}
+					y2={cy - 6}
+				/>
+				<line
+					opacity="0.7"
+					stroke={accent}
+					strokeWidth="1"
+					x1={cx}
+					x2={cx}
+					y1={cy + 6}
+					y2={cy + 20}
+				/>
+				<circle cx={cx} cy={cy} fill={accent} opacity="0.6" r={2} />
 
 				{/* ── Blip points ── */}
 				<g style={{ animation: "reticle-pulse 2s ease-in-out infinite" }}>
-					<circle cx={cx + 55} cy={cy - 40} r={3} fill={accent} opacity="0.7" />
-					<circle cx={cx + 55} cy={cy - 40} r={8} stroke={accent} strokeWidth="0.5" opacity="0.3" />
+					<circle cx={cx + 55} cy={cy - 40} fill={accent} opacity="0.7" r={3} />
+					<circle
+						cx={cx + 55}
+						cy={cy - 40}
+						opacity="0.3"
+						r={8}
+						stroke={accent}
+						strokeWidth="0.5"
+					/>
 				</g>
 				<g style={{ animation: "reticle-pulse 2s ease-in-out 0.8s infinite" }}>
-					<circle cx={cx - 30} cy={cy + 60} r={2.5} fill={accent} opacity="0.5" />
-					<circle cx={cx - 30} cy={cy + 60} r={7} stroke={accent} strokeWidth="0.5" opacity="0.2" />
+					<circle
+						cx={cx - 30}
+						cy={cy + 60}
+						fill={accent}
+						opacity="0.5"
+						r={2.5}
+					/>
+					<circle
+						cx={cx - 30}
+						cy={cy + 60}
+						opacity="0.2"
+						r={7}
+						stroke={accent}
+						strokeWidth="0.5"
+					/>
 				</g>
 				<g style={{ animation: "reticle-pulse 2s ease-in-out 1.4s infinite" }}>
-					<circle cx={cx + 80} cy={cy + 25} r={2} fill={fg} opacity="0.3" />
+					<circle cx={cx + 80} cy={cy + 25} fill={fg} opacity="0.3" r={2} />
 				</g>
 
 				{/* ── Corner brackets — HUD frame ── */}
 				{/* Top-left */}
-				<path d={`M ${cx - 155} ${cy - 140} L ${cx - 155} ${cy - 155} L ${cx - 140} ${cy - 155}`} stroke={fg} strokeWidth="0.8" opacity="0.2" fill="none" />
+				<path
+					d={`M ${cx - 155} ${cy - 140} L ${cx - 155} ${cy - 155} L ${cx - 140} ${cy - 155}`}
+					fill="none"
+					opacity="0.2"
+					stroke={fg}
+					strokeWidth="0.8"
+				/>
 				{/* Top-right */}
-				<path d={`M ${cx + 140} ${cy - 155} L ${cx + 155} ${cy - 155} L ${cx + 155} ${cy - 140}`} stroke={fg} strokeWidth="0.8" opacity="0.2" fill="none" />
+				<path
+					d={`M ${cx + 140} ${cy - 155} L ${cx + 155} ${cy - 155} L ${cx + 155} ${cy - 140}`}
+					fill="none"
+					opacity="0.2"
+					stroke={fg}
+					strokeWidth="0.8"
+				/>
 				{/* Bottom-left */}
-				<path d={`M ${cx - 155} ${cy + 140} L ${cx - 155} ${cy + 155} L ${cx - 140} ${cy + 155}`} stroke={fg} strokeWidth="0.8" opacity="0.2" fill="none" />
+				<path
+					d={`M ${cx - 155} ${cy + 140} L ${cx - 155} ${cy + 155} L ${cx - 140} ${cy + 155}`}
+					fill="none"
+					opacity="0.2"
+					stroke={fg}
+					strokeWidth="0.8"
+				/>
 				{/* Bottom-right */}
-				<path d={`M ${cx + 140} ${cy + 155} L ${cx + 155} ${cy + 155} L ${cx + 155} ${cy + 140}`} stroke={fg} strokeWidth="0.8" opacity="0.2" fill="none" />
+				<path
+					d={`M ${cx + 140} ${cy + 155} L ${cx + 155} ${cy + 155} L ${cx + 155} ${cy + 140}`}
+					fill="none"
+					opacity="0.2"
+					stroke={fg}
+					strokeWidth="0.8"
+				/>
 			</svg>
 
 			{/* ── Data readouts — positioned around the reticle ── */}
