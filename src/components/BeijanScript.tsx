@@ -12,7 +12,7 @@ export default function BeijanScript() {
 					id: "banm",
 					name: "HYDERABAD",
 					type: "MAIN OFFICE + 4 BANM TESTING LOCATIONS",
-					mapCoord: { x: "36.8%", y: "67.7%" },
+					mapCoord: { x: "36.8%", y: "61.3%" },
 					mapLabel: "HYDERABAD",
 					telemetry: "MAIN OFFICE + 4 BANM TESTING LOCATIONS",
 					specs: [
@@ -25,7 +25,7 @@ export default function BeijanScript() {
 					id: "aaps",
 					name: "POKHRAN",
 					type: "BANM TESTING LOCATION",
-					mapCoord: { x: "18%", y: "23%" },
+					mapCoord: { x: "18%", y: "22.5%" },
 					mapLabel: "POKHRAN",
 					telemetry: "TESTED AT 600M // SENSOR COMPLIANCE: SECURE",
 					specs: [
@@ -38,7 +38,7 @@ export default function BeijanScript() {
 					id: "leh",
 					name: "LEH",
 					type: "BANM TESTING LOCATION",
-					mapCoord: { x: "37%", y: "-7%" },
+					mapCoord: { x: "37%", y: "-6.3%" },
 					mapLabel: "LEH",
 					telemetry: "TESTED AT 600M // SENSOR COMPLIANCE: SECURE",
 					specs: [
@@ -195,25 +195,14 @@ export default function BeijanScript() {
 
 				// Callout
 				const co = document.getElementById("tacCallout");
-				co.style.left = `calc(${p.mapCoord.x} + 30px)`;
-				co.style.top = `calc(${p.mapCoord.y} + 30px)`;
+				co.style.left = `calc(${p.mapCoord.x} + 3px)`;
+				co.style.top = `calc(${p.mapCoord.y} + 3px)`;
 				document.getElementById("tacCalloutName").textContent = p.name;
 				document.getElementById("tacCalloutLabel").textContent = p.mapLabel;
 				document.getElementById("tacCalloutTelemetry").textContent =
 					p.telemetry;
 
-				// Specs bar
-				const bar = document.getElementById("tacSpecsBar");
-				bar.innerHTML = p.specs
-					.map(
-						(s) => `
-    <div class="tac-spec-cell">
-      <div class="tac-spec-label">${s.label}</div>
-      <div class="tac-spec-val">${s.value}</div>
-    </div>
-  `,
-					)
-					.join("");
+
 			}
 
 			function selectProduct(id) {
@@ -242,7 +231,7 @@ export default function BeijanScript() {
 					if (iteration >= original.length)
 						clearInterval(element.scrambleInterval);
 					iteration += 1 / 3;
-				}, 30);
+				}, 10);
 			}
 
 			// ===== SCROLL REVEAL & SCRAMBLE =====
@@ -352,7 +341,7 @@ export default function BeijanScript() {
 			if (openMenuBtn) openMenuBtn.addEventListener("click", () => toggleMenu());
 			if (closeMenuBtn) closeMenuBtn.addEventListener("click", () => toggleMenu(true));
 			if (menuOverlay) menuOverlay.addEventListener("click", () => toggleMenu(true));
-			
+
 			sideNavLinks.forEach(link => {
 				link.addEventListener("click", () => toggleMenu(true));
 			});
@@ -370,7 +359,7 @@ export default function BeijanScript() {
 							const mainNav = document.getElementById("mainNav");
 							if (mainNav) {
 								const currentScrollY = window.scrollY;
-								
+
 								// Toggle scrolled state (background blur)
 								mainNav.classList.toggle("scrolled", currentScrollY > 20);
 
@@ -411,21 +400,21 @@ export default function BeijanScript() {
 				function onScroll() {
 					const rect = container.getBoundingClientRect();
 					const viewportH = window.innerHeight;
-					
+
 					// If container is totally off-screen, don't do anything
 					if (rect.bottom < 0 || rect.top > viewportH) return;
 
 					// How much has scrolled past the top of the viewport
 					const scrolled = -rect.top;
 					const scrollableHeight = rect.height - viewportH;
-					
+
 					// Calculate ratio 0 to 1
 					let ratio = scrolled / scrollableHeight;
 					if (ratio < 0) ratio = 0;
 					if (ratio > 0.999) ratio = 0.999;
-					
+
 					const newIndex = Math.floor(ratio * productsData.length);
-					
+
 					if (newIndex !== lastIndex && newIndex >= 0 && newIndex < productsData.length) {
 						lastIndex = newIndex;
 						selectProduct(productsData[newIndex].id);

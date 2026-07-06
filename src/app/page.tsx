@@ -61,7 +61,7 @@ export default function HomePage() {
 			{/* SIDE MENU */}
 			<aside id="sideMenu" className="side-menu">
 				<div className="side-menu-header">
-					<span className="side-menu-title">NAV-SYSTEM</span>
+					<span className="side-menu-title">BEIJAN TECH</span>
 					<button id="closeMenuBtn" className="close-menu-btn">[ CLOSE ]</button>
 				</div>
 				<div className="nav-links side-nav-links">
@@ -72,7 +72,7 @@ export default function HomePage() {
 						ABOUT
 					</a>
 					<a href="#tactical" id="nav-tactical">
-						TARGETING
+						LOCATIONS
 					</a>
 					<a href="#products" id="nav-products">
 						SYSTEMS
@@ -85,8 +85,7 @@ export default function HomePage() {
 					</a>
 				</div>
 				<div className="side-menu-footer">
-					BEIJAN PLATFORM ENGINE V.2026<br />
-					HANDSHAKE SECURE
+					© 2026 Beijan Technologies. All rights reserved.
 				</div>
 			</aside>
 
@@ -104,9 +103,9 @@ export default function HomePage() {
 				</a>
 				<button id="openMenuBtn" className="open-menu-btn">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M3 12H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square"/>
-						<path d="M3 6H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square"/>
-						<path d="M3 18H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square"/>
+						<path d="M3 12H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square" />
+						<path d="M3 6H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square" />
+						<path d="M3 18H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square" />
 					</svg>
 				</button>
 			</nav>
@@ -520,9 +519,6 @@ export default function HomePage() {
 							</div>
 						</div>
 
-						<div className="tac-specs-bar" id="tacSpecsBar">
-							{/* Filled by JS */}
-						</div>
 					</div>
 				</section>
 			</div>
