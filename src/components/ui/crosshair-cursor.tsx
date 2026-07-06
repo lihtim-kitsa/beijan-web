@@ -40,7 +40,7 @@ export function CrosshairCursor() {
 	return (
 		<div
 			aria-hidden="true"
-			className="pointer-events-none fixed z-[9999]"
+			className="pointer-events-none fixed z-[9999] hidden lg:block"
 			ref={cursorRef}
 			style={{
 				top: 0,

@@ -9,7 +9,7 @@ export default function HomePage() {
 			<div id="scroll-progress"></div>
 
 			{/* CUSTOM CURSOR */}
-			<div id="cursor">
+			<div id="cursor" className="hidden lg:block">
 				<svg fill="none" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
 					<line
 						stroke="#D4003A"
