@@ -329,8 +329,38 @@ export default function BeijanScript() {
 				cursor.style.display = "none";
 			}
 
+			// ===== SIDE MENU LOGIC =====
+			const openMenuBtn = document.getElementById("openMenuBtn");
+			const closeMenuBtn = document.getElementById("closeMenuBtn");
+			const sideMenu = document.getElementById("sideMenu");
+			const menuOverlay = document.getElementById("menuOverlay");
+			const sideNavLinks = document.querySelectorAll(".side-nav-links a");
+
+			function toggleMenu(forceClose = false) {
+				if (!sideMenu || !menuOverlay) return;
+				if (forceClose) {
+					sideMenu.classList.remove("open");
+					menuOverlay.classList.remove("open");
+					document.body.style.overflow = "";
+				} else {
+					sideMenu.classList.toggle("open");
+					menuOverlay.classList.toggle("open");
+					document.body.style.overflow = sideMenu.classList.contains("open") ? "hidden" : "";
+				}
+			}
+
+			if (openMenuBtn) openMenuBtn.addEventListener("click", () => toggleMenu());
+			if (closeMenuBtn) closeMenuBtn.addEventListener("click", () => toggleMenu(true));
+			if (menuOverlay) menuOverlay.addEventListener("click", () => toggleMenu(true));
+			
+			sideNavLinks.forEach(link => {
+				link.addEventListener("click", () => toggleMenu(true));
+			});
+
 			// ===== NAV SCROLL =====
 			let scrollRafPending = false;
+			let lastScrollY = window.scrollY;
+
 			window.addEventListener(
 				"scroll",
 				() => {
@@ -338,8 +368,21 @@ export default function BeijanScript() {
 						scrollRafPending = true;
 						requestAnimationFrame(() => {
 							const mainNav = document.getElementById("mainNav");
-							if (mainNav)
-								mainNav.classList.toggle("scrolled", window.scrollY > 20);
+							if (mainNav) {
+								const currentScrollY = window.scrollY;
+								
+								// Toggle scrolled state (background blur)
+								mainNav.classList.toggle("scrolled", currentScrollY > 20);
+
+								// Hide on scroll down, show on scroll up
+								if (currentScrollY > lastScrollY && currentScrollY > 60) {
+									mainNav.classList.add("nav-hidden");
+								} else {
+									mainNav.classList.remove("nav-hidden");
+								}
+
+								lastScrollY = currentScrollY;
+							}
 
 							// Progress Bar
 							const winScroll =

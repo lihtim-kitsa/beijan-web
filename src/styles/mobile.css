@@ -18,12 +18,6 @@
 	.about-right::before {
 		display: none;
 	}
-	#tactical {
-		grid-template-columns: 1fr;
-		display: flex;
-		flex-direction: column;
-	}
-	.tac-left,
 	.tac-right {
 		padding: 60px 24px;
 	}
@@ -54,20 +48,6 @@
 @media (max-width: 768px) {
 	nav {
 		padding: 16px 20px;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 16px;
-	}
-	.nav-links {
-		width: 100%;
-		overflow-x: auto;
-		white-space: nowrap;
-		padding-bottom: 8px;
-		-webkit-overflow-scrolling: touch;
-		scrollbar-width: none;
-	}
-	.nav-links::-webkit-scrollbar {
-		display: none;
 	}
 
 	#hero {

@@ -55,19 +55,16 @@ export default function HomePage() {
 				</svg>
 			</div>
 
-			{/* NAV */}
-			<nav id="mainNav">
-				<a className="nav-logo" href="#hero">
-					<img
-						alt="Beijan Logo"
-						className="logo-img"
-						decoding="async"
-						loading="lazy"
-						src="beijan-logo.png"
-					/>
-					BEIJAN
-				</a>
-				<div className="nav-links">
+			{/* MENU OVERLAY */}
+			<div id="menuOverlay" className="menu-overlay"></div>
+
+			{/* SIDE MENU */}
+			<aside id="sideMenu" className="side-menu">
+				<div className="side-menu-header">
+					<span className="side-menu-title">NAV-SYSTEM</span>
+					<button id="closeMenuBtn" className="close-menu-btn">[ CLOSE ]</button>
+				</div>
+				<div className="nav-links side-nav-links">
 					<a className="active-nav" href="#hero" id="nav-hero">
 						HOME
 					</a>
@@ -87,6 +84,31 @@ export default function HomePage() {
 						CAREERS
 					</a>
 				</div>
+				<div className="side-menu-footer">
+					BEIJAN PLATFORM ENGINE V.2026<br />
+					HANDSHAKE SECURE
+				</div>
+			</aside>
+
+			{/* NAV */}
+			<nav id="mainNav">
+				<a className="nav-logo" href="#hero">
+					<img
+						alt="Beijan Logo"
+						className="logo-img"
+						decoding="async"
+						loading="lazy"
+						src="beijan-logo.png"
+					/>
+					BEIJAN
+				</a>
+				<button id="openMenuBtn" className="open-menu-btn">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M3 12H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square"/>
+						<path d="M3 6H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square"/>
+						<path d="M3 18H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square"/>
+					</svg>
+				</button>
 			</nav>
 
 			{/* ===== HERO ===== */}
