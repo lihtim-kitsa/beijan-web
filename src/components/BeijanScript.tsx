@@ -357,6 +357,52 @@ export default function BeijanScript() {
 				},
 				{ passive: true },
 			);
+			// ===== SCROLL-DRIVEN TACTICAL MAP =====
+			function initTacticalScroll() {
+				const container = document.getElementById("tactical-scroll-container");
+				if (!container) return;
+
+				let rafPending = false;
+				let lastIndex = 0; // Starts at Hyderabad
+
+				function onScroll() {
+					const rect = container.getBoundingClientRect();
+					const viewportH = window.innerHeight;
+					
+					// If container is totally off-screen, don't do anything
+					if (rect.bottom < 0 || rect.top > viewportH) return;
+
+					// How much has scrolled past the top of the viewport
+					const scrolled = -rect.top;
+					const scrollableHeight = rect.height - viewportH;
+					
+					// Calculate ratio 0 to 1
+					let ratio = scrolled / scrollableHeight;
+					if (ratio < 0) ratio = 0;
+					if (ratio > 0.999) ratio = 0.999;
+					
+					const newIndex = Math.floor(ratio * productsData.length);
+					
+					if (newIndex !== lastIndex && newIndex >= 0 && newIndex < productsData.length) {
+						lastIndex = newIndex;
+						selectProduct(productsData[newIndex].id);
+					}
+				}
+
+				window.addEventListener(
+					"scroll",
+					() => {
+						if (!rafPending) {
+							rafPending = true;
+							requestAnimationFrame(() => {
+								onScroll();
+								rafPending = false;
+							});
+						}
+					},
+					{ passive: true },
+				);
+			}
 
 			// ===== SCROLL-DRIVEN PRODUCT FADE =====
 			function initStickyProductScroll() {
@@ -764,6 +810,7 @@ export default function BeijanScript() {
 				initObservers();
 				initTerrain();
 				renderJobs();
+				initTacticalScroll();
 				initStickyProductScroll();
 			};
 			if (document.readyState === "complete") {
