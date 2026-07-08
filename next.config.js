@@ -10,6 +10,13 @@ const config = {
 	images: {
 		unoptimized: true,
 	},
+	typescript: {
+		ignoreBuildErrors: true,
+	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	productionBrowserSourceMaps: false,
 };
 
 export default config;

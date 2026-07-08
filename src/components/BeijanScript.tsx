@@ -48,7 +48,7 @@ export default function BeijanScript() {
 					],
 				},
 			];
-			let activeProduct = productsData[0];
+			const activeProduct = productsData[0];
 
 			// ===== JOBS DATA =====
 			const jobsData = [
@@ -151,65 +151,12 @@ export default function BeijanScript() {
   `,
 					)
 					.join("");
-				container
-					.querySelectorAll(".scramble-job")
-					.forEach((el) => scrambleText(el));
-			}
-
-			// ===== BUILD TACTICAL SELECTOR =====
-			function buildTacSelector() {
-				const sel = document.getElementById("tacSelector");
-				sel.innerHTML = "";
-				productsData.forEach((prod) => {
-					const isActive = prod.id === activeProduct.id;
-					const item = document.createElement("div");
-					item.className = "tac-item";
-					item.onclick = () => selectProduct(prod.id);
-					item.innerHTML = `
-      <div class="tac-radio ${isActive ? "active" : ""}"></div>
-      <div>
-        <span class="tac-item-label ${isActive ? "active" : ""}">${prod.name} // ${prod.type}</span>
-        ${isActive ? `<p class="tac-item-desc" style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.6;">${productsData.find((p) => p.id === prod.id) ? getDesc(prod.id) : ""}</p>` : ""}
-      </div>
-    `;
-					sel.appendChild(item);
+				container.querySelectorAll(".scramble-job").forEach((el) => {
+					scrambleText(el);
 				});
 			}
 
-			function getDesc(id) {
-				const descs = {
-					banm: "A compact hardware module that attaches to any drone, giving it edge compute and GPS-denied navigation capability. Plug it in, and the UAV becomes part of the Beijan ecosystem.",
-					aaps: "A compact hardware module that attaches to any drone, giving it edge compute and GPS-denied navigation capability. Plug it in, and the UAV becomes part of the Beijan ecosystem.",
-					leh: "A compact hardware module that attaches to any drone, giving it edge compute and GPS-denied navigation capability. Plug it in, and the UAV becomes part of the Beijan ecosystem.",
-				};
-				return descs[id] || "";
-			}
-
-			function updateTacDisplay() {
-				const p = activeProduct;
-				// Pin position
-				const pin = document.getElementById("tacPin");
-				pin.style.left = p.mapCoord.x;
-				pin.style.top = p.mapCoord.y;
-				pin.style.transform = "translate(-50%,-50%)";
-
-				// Callout
-				const co = document.getElementById("tacCallout");
-				co.style.left = `calc(${p.mapCoord.x} + 3px)`;
-				co.style.top = `calc(${p.mapCoord.y} + 3px)`;
-				document.getElementById("tacCalloutName").textContent = p.name;
-				document.getElementById("tacCalloutLabel").textContent = p.mapLabel;
-				document.getElementById("tacCalloutTelemetry").textContent =
-					p.telemetry;
-
-
-			}
-
-			function selectProduct(id) {
-				activeProduct = productsData.find((p) => p.id === id);
-				buildTacSelector();
-				updateTacDisplay();
-			}
+			// ===== TACTICAL MAP LOGIC MOVED TO REACT COMPONENT =====
 
 			// ===== SCRAMBLE =====
 			const scrambleChars = "!<>-_\\/[]{}—=+*^?#_";
@@ -275,7 +222,9 @@ export default function BeijanScript() {
 					},
 					{ threshold: 0.3 },
 				);
-				sections.forEach((s) => sectionObserver.observe(s));
+				sections.forEach((s) => {
+					sectionObserver.observe(s);
+				});
 			}
 
 			// ===== CURSOR =====
@@ -334,16 +283,18 @@ export default function BeijanScript() {
 				} else {
 					sideMenu.classList.toggle("open");
 					menuOverlay.classList.toggle("open");
-					document.body.style.overflow = sideMenu.classList.contains("open") ? "hidden" : "";
+					document.body.style.overflow = sideMenu.classList.contains("open")
+						? "hidden"
+						: "";
 				}
 			}
 
-			if (openMenuBtn) openMenuBtn.addEventListener("click", () => toggleMenu());
-			if (closeMenuBtn) closeMenuBtn.addEventListener("click", () => toggleMenu(true));
-			if (menuOverlay) menuOverlay.addEventListener("click", () => toggleMenu(true));
+			if (openMenuBtn) openMenuBtn.onclick = () => toggleMenu();
+			if (closeMenuBtn) closeMenuBtn.onclick = () => toggleMenu(true);
+			if (menuOverlay) menuOverlay.onclick = () => toggleMenu(true);
 
-			sideNavLinks.forEach(link => {
-				link.addEventListener("click", () => toggleMenu(true));
+			sideNavLinks.forEach((link: any) => {
+				link.onclick = () => toggleMenu(true);
 			});
 
 			// ===== NAV SCROLL =====
@@ -389,52 +340,7 @@ export default function BeijanScript() {
 				},
 				{ passive: true },
 			);
-			// ===== SCROLL-DRIVEN TACTICAL MAP =====
-			function initTacticalScroll() {
-				const container = document.getElementById("tactical-scroll-container");
-				if (!container) return;
-
-				let rafPending = false;
-				let lastIndex = 0; // Starts at Hyderabad
-
-				function onScroll() {
-					const rect = container.getBoundingClientRect();
-					const viewportH = window.innerHeight;
-
-					// If container is totally off-screen, don't do anything
-					if (rect.bottom < 0 || rect.top > viewportH) return;
-
-					// How much has scrolled past the top of the viewport
-					const scrolled = -rect.top;
-					const scrollableHeight = rect.height - viewportH;
-
-					// Calculate ratio 0 to 1
-					let ratio = scrolled / scrollableHeight;
-					if (ratio < 0) ratio = 0;
-					if (ratio > 0.999) ratio = 0.999;
-
-					const newIndex = Math.floor(ratio * productsData.length);
-
-					if (newIndex !== lastIndex && newIndex >= 0 && newIndex < productsData.length) {
-						lastIndex = newIndex;
-						selectProduct(productsData[newIndex].id);
-					}
-				}
-
-				window.addEventListener(
-					"scroll",
-					() => {
-						if (!rafPending) {
-							rafPending = true;
-							requestAnimationFrame(() => {
-								onScroll();
-								rafPending = false;
-							});
-						}
-					},
-					{ passive: true },
-				);
-			}
+			// ===== SCROLL-DRIVEN TACTICAL MAP MOVED TO REACT COMPONENT =====
 
 			// ===== SCROLL-DRIVEN PRODUCT FADE =====
 			function initStickyProductScroll() {
@@ -837,12 +743,9 @@ export default function BeijanScript() {
 
 			// ===== INIT =====
 			const initAll = () => {
-				buildTacSelector();
-				updateTacDisplay();
 				initObservers();
 				initTerrain();
 				renderJobs();
-				initTacticalScroll();
 				initStickyProductScroll();
 			};
 			if (document.readyState === "complete") {
