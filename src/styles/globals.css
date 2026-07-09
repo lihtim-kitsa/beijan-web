@@ -309,11 +309,12 @@ nav.scrolled {
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	padding-bottom: 14px;
 }
 
 .nav-logo::before {
 	content: "";
-	display: inline-block;
+	display: none;
 	width: 8px;
 	height: 8px;
 	background: var(--red);
@@ -371,7 +372,7 @@ nav.scrolled {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 8px;
+	padding-bottom: 8px;
 	transition: opacity 0.2s;
 }
 
@@ -445,7 +446,7 @@ nav.scrolled {
 
 .side-nav-links a.active-nav,
 .side-nav-links a:hover {
-	color: white;
+	color: var(--red);
 }
 
 .side-menu-footer {

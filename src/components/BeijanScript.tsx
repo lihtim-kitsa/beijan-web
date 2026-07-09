@@ -314,12 +314,7 @@ export default function BeijanScript() {
 								// Toggle scrolled state (background blur)
 								mainNav.classList.toggle("scrolled", currentScrollY > 20);
 
-								// Hide on scroll down, show on scroll up
-								if (currentScrollY > lastScrollY && currentScrollY > 60) {
-									mainNav.classList.add("nav-hidden");
-								} else {
-									mainNav.classList.remove("nav-hidden");
-								}
+								// Removed hide on scroll down, show on scroll up logic
 
 								lastScrollY = currentScrollY;
 							}

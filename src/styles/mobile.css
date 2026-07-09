@@ -236,7 +236,28 @@
 	}
 
 	#products-scroll-container {
-		height: 400vh;
+		height: auto;
+		margin-bottom: 40px;
+	}
+
+	.products-sticky-viewport {
+		position: relative;
+		top: auto;
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 80px;
+		overflow: visible;
+	}
+
+	.product-slide,
+	.product-slide.active-slide,
+	.product-slide.prev-slide,
+	.product-slide.next-slide {
+		position: relative !important;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+		transform: none !important;
 	}
 
 	.contact-title {
