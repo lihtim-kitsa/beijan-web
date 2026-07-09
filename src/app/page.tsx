@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 const BeijanScript = dynamic(() => import("~/components/BeijanScript"), { ssr: false });
-const TacticalSection = dynamic(() => import("~/components/TacticalSection"), { 
+const TacticalSection = dynamic(() => import("~/components/TacticalSection"), {
 	ssr: false,
 	loading: () => <div style={{ height: "300vh", position: "relative" }}></div>
 });
@@ -265,10 +265,6 @@ export default function HomePage() {
 					<h1>
 						<span className="scramble" data-value="BEIJAN">
 							BEIJAN
-						</span>
-						<br />
-						<span className="scramble" data-value="TECH">
-							TECH
 						</span>
 					</h1>
 					<p
