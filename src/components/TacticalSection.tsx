@@ -301,7 +301,7 @@ export default function TacticalSection() {
 							</p>
 						</div>
 					) : (
-						<div className="absolute inset-0 z-0 flex items-center justify-center">
+						<div className={`absolute inset-0 z-0 flex items-center justify-center ${isMobile ? "pointer-events-none" : ""}`}>
 							<Globe
 								rendererConfig={{ antialias: false, powerPreference: "high-performance" }}
 								atmosphereAltitude={0.15}
