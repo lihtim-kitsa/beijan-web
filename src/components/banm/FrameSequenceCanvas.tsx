@@ -29,9 +29,15 @@ export default function FrameSequenceCanvas() {
 	useEffect(() => {
 		const handleScroll = (e: any) => {
 			const p = e.detail;
+			
+			// Map 0 -> 0.5 to frames 1 -> TOTAL_FRAMES
+			// Above 0.5, stay on TOTAL_FRAMES
+			let animationProgress = p * 2;
+			animationProgress = Math.max(0, Math.min(1, animationProgress));
+			
 			const targetFrame = Math.max(
 				1,
-				Math.min(TOTAL_FRAMES, Math.floor(p * TOTAL_FRAMES) + 1)
+				Math.min(TOTAL_FRAMES, Math.floor(animationProgress * TOTAL_FRAMES) + 1)
 			);
 			targetFrameRef.current = targetFrame;
 		};

@@ -53,53 +53,85 @@ export default function BeijanScript() {
 			// ===== JOBS DATA =====
 			const jobsData = [
 				{
-					title: "Embedded Systems Engineer",
+					title: "Senior Engineer — Visual / Inertial State Estimation",
+					category: "SOFTWARE",
+					location: "HYDERABAD",
+					shortDesc: "Own the estimation stack that lets a small aerial platform know where it is with no GPS.",
+					about: "This is the core technical hire for our navigation product. You will own the estimation stack that lets a small aerial platform know where it is with no GPS.<br><br><strong>What you'll own:</strong><br>- The dead-reckoning core: optical-flow-to-velocity, IMU fusion, and the EKF/VIO that ties camera, IMU, and lidar into a single position/velocity estimate.<br>- Characterizing and driving down drift — turning 'meters of error per minute of flight' into a number we can put in front of customers and shrink release over release.<br>- The estimator's failure behavior: detecting and handling flow rejection, feature-poor terrain, and degraded sensor conditions gracefully.<br><br><strong>You'll thrive here if</strong> you want deep ownership of a hard problem in a tiny team, are comfortable being the person the whole product depends on, and can move from theory to a thing that flies.",
+					mustHave: [
+						"Strong hands-on experience with visual odometry, VIO, or SLAM in a real (not purely academic) setting.",
+						"Solid state-estimation fundamentals: Kalman/extended Kalman filtering, sensor fusion, coordinate frames, time synchronization.",
+						"Proficient in C++ and/or Python for real-time estimation code.",
+						"Comfortable working from flight/field logs: quantifying error against a ground-truth reference."
+					],
+					niceToHave: [
+						"ArduPilot / PX4 internals, especially EKF3.",
+						"Experience on constrained compute (Raspberry Pi / Jetson-class).",
+						"Lidar/rangefinder integration; camera-IMU calibration.",
+						"Any background in GPS-denied, contested, or defense/UAS navigation."
+					],
+					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware and flight/field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
+					emailSubject: "Senior Engineer — Visual / Inertial State Estimation Application"
+				},
+				{
+					title: "Engineer — Embedded + Computer Vision / Map-Matching",
+					category: "SOFTWARE",
+					location: "HYDERABAD",
+					shortDesc: "Make the navigation payload run for real and own the map-matching pipeline.",
+					about: "You make the navigation payload run for real — on the actual hardware, in real time — and you own the piece that bounds long-range drift: matching what the camera sees against a reference map to get absolute position fixes.<br><br><strong>What you'll own:</strong><br>- The embedded / real-time side: getting optical flow, lidar, and camera pipelines running within the timing and power budget of a Raspberry Pi / Jetson-class board.<br>- Sensor time-synchronization across camera, IMU, and lidar — the detail that quietly makes or breaks accuracy.<br>- The map-matching pipeline: registering the downward camera frame against a satellite/aerial basemap to produce absolute fixes that reset accumulated drift at higher altitude — handling scale, rotation, illumination, and seasonal differences.<br>- Building and maintaining the reference-tile / basemap data pipeline.<br><br><strong>You'll thrive here if</strong> you like living where software meets hardware, enjoy chasing down a millisecond of timing skew, and want to own a whole subsystem rather than a ticket queue.",
+					mustHave: [
+						"Strong Python and/or C++, comfortable on embedded Linux.",
+						"Practical computer vision: feature detection/matching, image registration, OpenCV.",
+						"Experience getting vision or sensor code to run in real time on constrained hardware."
+					],
+					niceToHave: [
+						"Geospatial / satellite imagery experience (tiling, geo-registration, GDAL).",
+						"Camera drivers, GStreamer, hardware time-sync, IMU integration.",
+						"Exposure to learned feature matching / lightweight on-device models.",
+						"Drone / robotics build experience."
+					],
+					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware and flight/field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
+					emailSubject: "Engineer — Embedded + Computer Vision / Map-Matching Application"
+				},
+				{
+					title: "Senior Mechatronics Engineer — Artillery Automation",
 					category: "HARDWARE",
 					location: "HYDERABAD",
-					shortDesc:
-						"Design and implement bare-metal firmware for real-time edge compute modules.",
-					about:
-						"You will be responsible for building the core bare-metal firmware that powers our edge compute modules. This requires a deep understanding of embedded systems, RTOS, and performance optimization for critical real-time constraints.",
-					reqs: [
-						"Strong experience with C/C++ in embedded environments.",
-						"Experience with STM32 or other ARM Cortex-M microcontrollers.",
-						"Familiarity with hardware communication protocols (SPI, I2C, UART, CAN).",
-						"Ability to read hardware schematics and use oscilloscopes/logic analyzers.",
+					shortDesc: "Lead the mechanical and drive design for our gun-automation product.",
+					about: "You lead the mechanical and drive design for our gun-automation product — retrofitting motorized, closed-loop laying onto existing towed artillery. This is heavy, real-world mechatronics where things must survive recoil, vibration, dust, and field abuse.<br><br><strong>What you'll own:</strong><br>- End-to-end mechanical design of the azimuth and elevation drive retrofit: CAD, mounting and bracketry, and integration onto the existing gun structure.<br>- Sizing the drivetrain: slew-torque calculations, gearbox and motor selection, industrial servo-drive specification, encoder/resolver selection.<br>- Design for the real environment — recoil loads, vibration, environmental sealing — and for manufacturability of machined parts.<br>- Working with vendors and machine shops to get prototype parts made, and being hands-on during assembly and trials.<br><br><strong>You'll thrive here if</strong> you want to own a whole hardware product line from CAD to a working prototype on a real gun, and you're energized (not scared) by moving multi-tonne systems safely and precisely.",
+					mustHave: [
+						"Strong 3D CAD (SolidWorks or equivalent) and mechanical design fundamentals.",
+						"Real experience with motorized motion systems: servo drives, gearboxes, torque/load sizing.",
+						"Design-for-manufacture instinct and comfort working directly with fabrication vendors.",
+						"Willingness to be in the workshop and in the field, not just at a desk."
 					],
-					emailSubject: "Embedded Systems Engineer Application",
+					niceToHave: [
+						"Experience with heavy machinery, industrial automation, robotics, or defense hardware.",
+						"Familiarity with encoders/resolvers, motor controllers, and closed-loop motion control.",
+						"Knowledge of Indian defense procurement / trials processes (iDEX, TDF, DPSU partnerships).",
+						"Awareness of safety-critical design and interlock requirements."
+					],
+					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware and flight/field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
+					emailSubject: "Senior Mechatronics Engineer — Artillery Automation Application"
 				},
 				{
-					title: "Perception Engineer (VIO/SLAM)",
-					category: "SOFTWARE",
+					title: "Operations & Admin Associate",
+					category: "OPERATIONS",
 					location: "HYDERABAD",
-					shortDesc:
-						"Build GPS-denied navigation systems using visual-inertial odometry.",
-					about:
-						"We are seeking a perception engineer to enhance our visual-inertial odometry pipelines. You will optimize SLAM algorithms for edge hardware to ensure robust GPS-denied navigation in dynamic and texture-less environments.",
-					reqs: [
-						"Solid background in SLAM, VIO, and 3D geometry.",
-						"Strong C++ programming skills and experience with OpenCV/Eigen.",
-						"Familiarity with filtering techniques (EKF, UKF) or factor graphs (GTSAM, Ceres).",
-						"Previous experience deploying perception models to embedded devices.",
+					shortDesc: "Keep a five-person defense startup running so the engineers can build.",
+					about: "You keep a five-person defense startup running so the engineers can build. Small role, high leverage.<br><br><strong>What you'll own:</strong><br>- Procurement and vendor coordination — chasing quotes, POs, and deliveries for both electronics and machined hardware.<br>- Compliance and paperwork: company filings, basic bookkeeping coordination with our accountant, and the documentation trail that defense work demands.<br>- Logistics: shipments, travel and trial logistics, workspace and inventory.<br>- General founder support — keeping the operational plates spinning.<br><br><strong>You'll thrive here if</strong> you like being the person who makes everything actually happen, and want a broad ops role with room to grow as the company scales.",
+					mustHave: [
+						"Highly organized, reliable, and proactive; comfortable owning things end-to-end without hand-holding.",
+						"Good written communication and comfort with spreadsheets / basic tools.",
+						"Discretion — you'll be around sensitive work."
 					],
-					emailSubject: "Perception Engineer Application",
-				},
-				{
-					title: "Full Stack Engineer (Ground Station)",
-					category: "SOFTWARE",
-					location: "HYDERABAD",
-					shortDesc:
-						"Develop low-latency, mission-critical operator interfaces and telemetry dashboards.",
-					about:
-						"You will build the Beijan Ground Station (BGS) interface. This involves handling real-time telemetry, live video feeds, and mission planning tools in a seamless UI for operators in high-stress environments.",
-					reqs: [
-						"Strong proficiency in React, TypeScript, and Node.js.",
-						"Experience with WebSockets and high-frequency data streams.",
-						"Knowledge of UX principles for complex dashboards.",
-						"(Bonus) Familiarity with MAVLink or GIS/mapping libraries (Mapbox, Leaflet).",
+					niceToHave: [
+						"Prior startup or ops/admin experience.",
+						"Familiarity with procurement, GST/compliance basics, or defense/government paperwork."
 					],
-					emailSubject: "Full Stack Engineer Application",
-				},
+					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware and flight/field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
+					emailSubject: "Operations & Admin Associate Application"
+				}
 			];
 
 			let activeJobFilter = "ALL";
@@ -139,12 +171,10 @@ export default function BeijanScript() {
         <div class="jd-body-content" onclick="event.stopPropagation()">
           <h4>ABOUT THE ROLE</h4>
           <p>${job.about}</p>
-          <h4>REQUIREMENTS</h4>
-          <ul>
-            ${job.reqs.map((r) => `<li>${r}</li>`).join("")}
-          </ul>
+          ${job.mustHave ? `<h4>MUST HAVE</h4><ul>${job.mustHave.map((r) => `<li>${r}</li>`).join("")}</ul>` : ""}
+          ${job.niceToHave ? `<h4>NICE TO HAVE</h4><ul>${job.niceToHave.map((r) => `<li>${r}</li>`).join("")}</ul>` : ""}
+          ${job.notes ? `<h4>NOTES</h4><p>${job.notes}</p>` : ""}
           <a href="mailto:hello@beijantech.com?subject=${encodeURIComponent(job.emailSubject)}" class="btn-primary" style="margin-top:24px; display:inline-block; text-decoration:none; cursor:none;">APPLY VIA EMAIL</a>
-          <a href="javascript:void(0)" class="btn-ghost" style="margin-top:24px; margin-left:12px; display:inline-block; text-decoration:none; cursor:none;" onclick="alert('Redirecting to Applicant Tracking System...');">APPLY ON PORTAL ↗</a>
         </div>
       </div>
     </div>

@@ -68,10 +68,19 @@ export default function CareersPage() {
 					<button id="closeMenuBtn" className="close-menu-btn">[ CLOSE ]</button>
 				</div>
 				<div className="nav-links side-nav-links">
-					<a href="/" id="nav-hero">
+					<a href="/#hero" id="nav-hero">
 						HOME
 					</a>
-					<a className="active-nav" href="#hero" id="nav-hiring">
+					<a href="/#locations" id="nav-about">
+						LOCATIONS
+					</a>
+					<a href="/banm" id="nav-banm">
+						BANM
+					</a>
+					<a href="/#products" id="nav-products">
+						SYSTEMS
+					</a>
+					<a className="active-nav" href="/careers" id="nav-hiring">
 						CAREERS
 					</a>
 				</div>
@@ -92,6 +101,12 @@ export default function CareersPage() {
 					/>
 					BEIJAN
 				</a>
+
+				<div className="hidden lg:flex flex-row items-center gap-10 nav-links" style={{ flexDirection: "row", alignItems: "center" }}>
+					<a href="/banm">BANM</a>
+					<a className="active-nav" href="/careers">CAREERS</a>
+				</div>
+
 				<button id="openMenuBtn" className="open-menu-btn">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M3 12H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square" />
@@ -110,7 +125,7 @@ export default function CareersPage() {
 				<div className="hero-title reveal">
 					<h1>
 						<span className="scramble" data-value="CAREERS">
-							CAREERS
+							JOIN US.
 						</span>
 					</h1>
 					<p
@@ -140,7 +155,7 @@ export default function CareersPage() {
 			</section>
 
 			{/* ===== HIRING (Culture) ===== */}
-			<section id="hiring" style={{ paddingTop: "80px" }}>
+			<section id="hiring" style={{ padding: "80px 40px 80px" }}>
 				<div
 					className="hiring-header reveal delay-1"
 					style={{ marginBottom: "60px" }}
@@ -220,6 +235,14 @@ export default function CareersPage() {
 					>
 						[SOFTWARE]
 					</button>
+					<button
+						className="filter-btn"
+						onClick={() => {
+							if (typeof window !== "undefined") (window as any).setJobFilter?.("OPERATIONS");
+						}}
+					>
+						[OPERATIONS]
+					</button>
 				</div>
 
 				{/* Dynamic Jobs Container (If BeijanScript auto populates it here, we leave it empty. 
@@ -228,37 +251,6 @@ export default function CareersPage() {
 					className="hiring-list crosshair-corner reveal delay-3"
 					id="jobsContainer"
 				>
-					{/* Fallback jobs in case BeijanScript doesn't populate on this route */}
-					<div className="job-row" data-category="SOFTWARE">
-						<div className="job-info">
-							<div className="job-title">Software Engineer, Autonomy</div>
-							<div className="job-meta">
-								<span className="job-tag">SOFTWARE</span>
-								<span>San Francisco, CA</span>
-							</div>
-						</div>
-						<div className="job-arrow">→</div>
-					</div>
-					<div className="job-row" data-category="HARDWARE">
-						<div className="job-info">
-							<div className="job-title">Mechanical Engineer, Structures</div>
-							<div className="job-meta">
-								<span className="job-tag">HARDWARE</span>
-								<span>San Francisco, CA</span>
-							</div>
-						</div>
-						<div className="job-arrow">→</div>
-					</div>
-					<div className="job-row" data-category="SOFTWARE">
-						<div className="job-info">
-							<div className="job-title">Robotics Perception Engineer</div>
-							<div className="job-meta">
-								<span className="job-tag">SOFTWARE</span>
-								<span>San Francisco, CA</span>
-							</div>
-						</div>
-						<div className="job-arrow">→</div>
-					</div>
 				</div>
 
 				{/* Open Application Catch-all */}

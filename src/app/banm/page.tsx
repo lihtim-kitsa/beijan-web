@@ -32,7 +32,7 @@ export default function BanmPage() {
 		const updateProgress = () => {
 			// Ease factor (lower = smoother but slower to catch up)
 			const ease = 0.08;
-			
+
 			// If we're not at the target, interpolate
 			if (Math.abs(targetProgressRef.current - currentProgressRef.current) > 0.0005) {
 				currentProgressRef.current += (targetProgressRef.current - currentProgressRef.current) * ease;
@@ -49,7 +49,7 @@ export default function BanmPage() {
 
 			rafId = requestAnimationFrame(updateProgress);
 		};
-		
+
 		rafId = requestAnimationFrame(updateProgress);
 
 		const handleScroll = () => {
@@ -66,7 +66,7 @@ export default function BanmPage() {
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		handleScroll(); // initialize
-		
+
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 			cancelAnimationFrame(rafId);
@@ -83,12 +83,15 @@ export default function BanmPage() {
 					href="/"
 					className="font-sans font-bold text-sm tracking-[0.15em] uppercase flex items-center gap-2 pointer-events-auto hover:text-[var(--red)] transition-colors"
 				>
-					<img src="/beijan-logo.png" alt="Logo" className="w-6 h-6 invert opacity-90" />
-					BEIJAN TECH
+					<img src="/beijan-logo-white.png" alt="Logo" className="w-6 h-6 opacity-90" />
+					BEIJAN
 				</Link>
-				<div className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-white/50 hidden md:block">
-					SYS-01 // BANM
+
+				<div className="hidden lg:flex flex-row items-center gap-10 font-mono text-xs tracking-[0.15em] uppercase pointer-events-auto">
+					<a href="/banm" className="text-[var(--red)] border-b border-[var(--red)] pb-1">BANM</a>
+					<a href="/careers" className="text-white/60 hover:text-[var(--red)] transition-colors">CAREERS</a>
 				</div>
+
 				<Link
 					href="/careers"
 					className="font-mono text-xs tracking-widest pointer-events-auto hover:text-[var(--red)] transition-colors uppercase border border-white/20 px-4 py-2 bg-black/50 backdrop-blur-sm"
@@ -117,7 +120,7 @@ export default function BanmPage() {
 						BANM
 					</h1>
 					<p className="font-mono text-white/70 text-sm md:text-base max-w-lg tracking-wide leading-relaxed">
-						Autonomous navigation module for contested airspace. 
+						Autonomous navigation module for contested airspace.
 						Transforming Group 3-5 platforms into collaborative kinetic assets.
 					</p>
 				</div>
@@ -132,28 +135,64 @@ export default function BanmPage() {
 			</section>
 
 			{/* SECTION B: SCROLL-DRIVEN SEQUENCE */}
-			<section 
-				ref={scrollContainerRef} 
+			<section
+				ref={scrollContainerRef}
 				className="relative w-full"
-				style={{ height: "400vh" }} // 4x viewport height for smooth scrubbing
+				style={{ height: "800vh" }} // 8x viewport height (4x for animation, 4x for features)
 			>
 				<div className="sticky top-0 w-full h-screen overflow-hidden bg-[#0b0b0b]">
 					{/* Grid Overlay Texture */}
 					<div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-10"></div>
-					
+
 					{/* The Canvas */}
 					<FrameSequenceCanvas />
-					
+
 					{/* Callouts (Data overlays) */}
 					<FeatureCallouts />
 
 					{/* Global progress bar */}
 					<div className="absolute top-24 right-8 w-1 h-32 bg-white/10 z-20 rounded-full hidden md:block">
-						<div 
+						<div
 							className="w-full bg-[var(--red)] rounded-full transition-all duration-75"
 							id="banm-progress-bar"
 						></div>
 					</div>
+				</div>
+
+				{/* SCROLLING FEATURE BLOCKS (Native Scroll over the sticky canvas) */}
+				<div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20">
+					{/* Spacer to push text down to the second half of the scroll (after animation finishes at 400vh) */}
+					<div style={{ height: "400vh" }}></div>
+
+					{/* Feature 1 */}
+					<div className="h-screen flex flex-col justify-center px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-1">
+						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-4 uppercase">COMP-01 // FOV</h3>
+						<h2 className="font-sans text-5xl md:text-7xl font-bold uppercase mb-6 leading-none">WIDE ANGLE FIELD OF VIEW</h2>
+						<p className="font-sans text-lg text-white/70 leading-relaxed max-w-lg">
+							RasPi Cam 3 NoIR Wide, which provides a 120 degree field of view, ensuring the BANM can see everything in front of it.
+						</p>
+					</div>
+
+					{/* Feature 2 */}
+					<div className="h-screen flex flex-col justify-center px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-2">
+						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-4 uppercase">SENS-04 // IMU ARRAY</h3>
+						<h2 className="font-sans text-5xl md:text-7xl font-bold uppercase mb-6 leading-none">TACTICAL-GRADE NAVIGATION</h2>
+						<p className="font-sans text-lg text-white/70 leading-relaxed max-w-lg">
+							Precision inertial navigation ensuring sustained operations in heavily contested, GPS-denied environments. Drift rate: &lt; 0.1 DEG/HR.
+						</p>
+					</div>
+
+					{/* Feature 3 */}
+					<div className="h-screen flex flex-col justify-center px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-3">
+						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-4 uppercase">PWR-02 // THERMAL CORE</h3>
+						<h2 className="font-sans text-5xl md:text-7xl font-bold uppercase mb-6 leading-none">ACTIVE THERMAL MANAGEMENT</h2>
+						<p className="font-sans text-lg text-white/70 leading-relaxed max-w-lg">
+							Advanced cooling systems sustaining continuous high-performance operations up to 60°C ambient temperatures.
+						</p>
+					</div>
+
+					{/* Spacer at the end so the last feature stays on screen before entering the next section */}
+					<div style={{ height: "100vh" }}></div>
 				</div>
 			</section>
 

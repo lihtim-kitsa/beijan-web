@@ -106,6 +106,12 @@ export default function HomePage() {
 					/>
 					BEIJAN
 				</a>
+				
+				<div className="hidden lg:flex flex-row items-center gap-10 nav-links" style={{ flexDirection: "row", alignItems: "center" }}>
+					<a href="/banm">BANM</a>
+					<a href="/careers">CAREERS</a>
+				</div>
+
 				<button id="openMenuBtn" className="open-menu-btn">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M3 12H21" stroke="var(--ink)" strokeWidth="2" strokeLinecap="square" />
@@ -732,143 +738,6 @@ export default function HomePage() {
 							></path>
 						</svg>
 					</button>
-				</div>
-			</section>
-
-			{/* ===== HIRING ===== */}
-			<section
-				id="hiring"
-				style={{
-					padding: "120px 40px 80px",
-					borderTop: "1px solid var(--line)",
-				}}
-			>
-				<div
-					className="section-eyebrow reveal scramble"
-					data-value="JOIN THE MISSION"
-				>
-					JOIN THE MISSION
-				</div>
-				<div
-					className="hiring-header reveal delay-1"
-					style={{ marginBottom: "60px" }}
-				>
-					<h2 className="display-xl">
-						Build the <span className="accent">future</span> of autonomous
-						systems.
-					</h2>
-					<p className="body-text" style={{ marginTop: "20px" }}>
-						We are always looking for exceptional talent to join our mission. If
-						you build hard tech, we want to hear from you.
-					</p>
-				</div>
-
-				{/* Engineering Culture Callout */}
-				<div className="culture-block reveal delay-2">
-					<div className="stat">
-						<div className="stat-num">100%</div>
-						<div className="stat-label">IN-PERSON HQ</div>
-						<div className="stat-sub">
-							Hardware &amp; software under one roof
-						</div>
-					</div>
-					<div className="stat">
-						<div
-							className="stat-num"
-							style={{ fontSize: "clamp(22px,2.8vw,34px)" }}
-						>
-							SHIP IN
-							<br />
-							WEEKS
-						</div>
-						<div className="stat-label">ZERO BUREAUCRACY</div>
-						<div className="stat-sub">Rapid prototyping over presentations</div>
-					</div>
-					<div className="stat">
-						<div
-							className="stat-num"
-							style={{ fontSize: "clamp(22px,2.8vw,34px)" }}
-						>
-							FULL
-							<br />
-							STACK
-						</div>
-						<div className="stat-label">END-TO-END SYSTEM</div>
-						<div className="stat-sub">
-							Own the pipeline, not just a component
-						</div>
-					</div>
-				</div>
-
-				{/* Filter Bar */}
-				<div className="hiring-filter reveal delay-3">
-					<div className="hiring-filter-label">OPEN ROLES // </div>
-					<button
-						className="filter-btn active"
-						onClick={() => {
-							(window as any).setJobFilter("ALL");
-						}}
-					>
-						[ALL]
-					</button>
-					<button
-						className="filter-btn"
-						onClick={() => {
-							(window as any).setJobFilter("HARDWARE");
-						}}
-					>
-						[HARDWARE]
-					</button>
-					<button
-						className="filter-btn"
-						onClick={() => {
-							(window as any).setJobFilter("SOFTWARE");
-						}}
-					>
-						[SOFTWARE]
-					</button>
-				</div>
-
-				{/* Dynamic Jobs Container */}
-				<div
-					className="hiring-list crosshair-corner reveal delay-3"
-					id="jobsContainer"
-				>
-					{/* JS POPULATES JOBS HERE */}
-				</div>
-
-				{/* Open Application Catch-all */}
-				<div className="open-app-block reveal delay-4">
-					<div>
-						<div className="open-app-title">DON'T SEE YOUR EXACT ROLE?</div>
-						<div className="open-app-desc">
-							If you are a top 1% engineer, we'll create a role for you. We need
-							brilliant minds across mechanical, firmware, perception, and
-							operations.
-						</div>
-					</div>
-					<a
-						className="btn-dark"
-						href="mailto:hello@beijantech.com?subject=Open Application"
-						style={{
-							textDecoration: "none",
-							cursor: "none",
-							display: "inline-flex",
-							alignItems: "center",
-							gap: "8px",
-						}}
-					>
-						APPLY VIA EMAIL
-						<svg fill="none" height="16" viewBox="0 0 16 16" width="16">
-							<path
-								d="M3 8H13M13 8L9 4M13 8L9 12"
-								stroke="white"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="1.5"
-							></path>
-						</svg>
-					</a>
 				</div>
 			</section>
 
