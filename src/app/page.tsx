@@ -79,10 +79,13 @@ export default function HomePage() {
 					<a href="#tactical" id="nav-tactical">
 						LOCATIONS
 					</a>
+					<a href="/banm" id="nav-banm">
+						BANM
+					</a>
 					<a href="#products" id="nav-products">
 						SYSTEMS
 					</a>
-					<a href="#hiring" id="nav-hiring">
+					<a href="/careers" id="nav-hiring">
 						CAREERS
 					</a>
 				</div>

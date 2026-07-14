@@ -339,13 +339,13 @@ export default function TacticalSection() {
 								onGlobeReady={() => {
 									if (globeRef.current) {
 										globeRef.current.controls().enableZoom = false;
-										
+
 										// Set initial zoomed-in view
 										globeRef.current.pointOfView(
-											{ 
-												lat: locations[0]!.lat, 
-												lng: locations[0]!.lng, 
-												altitude: locations[0]!.altitude 
+											{
+												lat: locations[0]!.lat,
+												lng: locations[0]!.lng,
+												altitude: locations[0]!.altitude
 											},
 											0
 										);
