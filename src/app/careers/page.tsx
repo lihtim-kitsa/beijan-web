@@ -71,9 +71,6 @@ export default function CareersPage() {
 					<a href="/#hero" id="nav-hero">
 						HOME
 					</a>
-					<a href="/#locations" id="nav-about">
-						LOCATIONS
-					</a>
 					<a href="/banm" id="nav-banm">
 						BANM
 					</a>
