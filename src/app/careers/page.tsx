@@ -124,16 +124,10 @@ export default function CareersPage() {
 
 				<div className="hero-title reveal">
 					<h1>
-						<span className="scramble" data-value="CAREERS">
+						<span className="scramble" data-value="JOIN US.">
 							JOIN US.
 						</span>
 					</h1>
-					<p
-						className="hero-sub reveal scramble delay-1"
-						data-value="BUILD THE FUTURE OF AUTONOMOUS SYSTEMS."
-					>
-						BUILD THE FUTURE OF AUTONOMOUS SYSTEMS.
-					</p>
 					<div className="hero-cta reveal delay-2">
 						<button
 							className="btn-primary"
@@ -161,12 +155,10 @@ export default function CareersPage() {
 					style={{ marginBottom: "60px" }}
 				>
 					<h2 className="display-xl">
-						Build the <span className="accent">future</span> of autonomous
-						systems.
+						Build the <span className="accent">future</span> of autonomous systems.
 					</h2>
 					<p className="body-text" style={{ marginTop: "20px" }}>
-						We are always looking for exceptional talent to join our mission. If
-						you build hard tech, we want to hear from you.
+						We're looking for people who'd rather build than pitch. If you've shipped real hardware — not just simulated it — we want to talk.
 					</p>
 				</div>
 
@@ -234,14 +226,6 @@ export default function CareersPage() {
 						}}
 					>
 						[SOFTWARE]
-					</button>
-					<button
-						className="filter-btn"
-						onClick={() => {
-							if (typeof window !== "undefined") (window as any).setJobFilter?.("OPERATIONS");
-						}}
-					>
-						[OPERATIONS]
 					</button>
 				</div>
 

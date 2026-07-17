@@ -5,6 +5,14 @@ import { banmConfig } from "~/data/banmConfig";
 
 export default function FeatureCallouts() {
 	const [activeFeature, setActiveFeature] = useState<string | null>(null);
+	const [layout, setLayout] = useState({ offsetX: 0, offsetY: 0, scaleX: 1, scaleY: 1 });
+
+	// Listen to canvas layout updates to sync dot positions
+	useEffect(() => {
+		const handleLayout = (e: any) => setLayout(e.detail);
+		window.addEventListener("banm-canvas-layout", handleLayout);
+		return () => window.removeEventListener("banm-canvas-layout", handleLayout);
+	}, []);
 
 	// Use Intersection Observer to detect which text block is active
 	useEffect(() => {
@@ -46,8 +54,13 @@ export default function FeatureCallouts() {
 			{/* LOCATE CALLOUTS - Dots and Pointers */}
 			{banmConfig.locateCallouts.map((callout) => {
 				const isActive = activeFeature === callout.id;
-				const top = `${callout.y * 100}%`;
-				const left = `${callout.x * 100}%`;
+				
+				// Map 0-1 image coordinates to 0-1 screen coordinates using canvas layout
+				const screenX = layout.offsetX + (callout.x * layout.scaleX);
+				const screenY = layout.offsetY + (callout.y * layout.scaleY);
+
+				const left = `${screenX * 100}%`;
+				const top = `${screenY * 100}%`;
 
 				return (
 					<div

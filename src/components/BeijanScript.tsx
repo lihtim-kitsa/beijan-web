@@ -53,84 +53,46 @@ export default function BeijanScript() {
 			// ===== JOBS DATA =====
 			const jobsData = [
 				{
-					title: "Senior Engineer — Visual / Inertial State Estimation",
+					title: "Mechanical / Powertrain Design Engineer",
 					category: "SOFTWARE",
 					location: "HYDERABAD",
-					shortDesc: "Own the estimation stack that lets a small aerial platform know where it is with no GPS.",
-					about: "This is the core technical hire for our navigation product. You will own the estimation stack that lets a small aerial platform know where it is with no GPS.<br><br><strong>What you'll own:</strong><br>- The dead-reckoning core: optical-flow-to-velocity, IMU fusion, and the EKF/VIO that ties camera, IMU, and lidar into a single position/velocity estimate.<br>- Characterizing and driving down drift — turning 'meters of error per minute of flight' into a number we can put in front of customers and shrink release over release.<br>- The estimator's failure behavior: detecting and handling flow rejection, feature-poor terrain, and degraded sensor conditions gracefully.<br><br><strong>You'll thrive here if</strong> you want deep ownership of a hard problem in a tiny team, are comfortable being the person the whole product depends on, and can move from theory to a thing that flies.",
+					shortDesc: "You'll own the mechanical design of our actuation and motor-driven subsystems — CAD modeling, structural/stress analysis, and iterating on real hardware. Ideal if you've built things that had to survive real-world loads, not just simulations.",
+					about: "This is the core mechanical hire for our actuation and gimbal/mount subsystems. You will own the physical design that lets a motor-driven platform hold position, survive vibration, and take real loads in the field.<br><br><strong>What you'll own:</strong><br>- CAD design and iteration of actuation, mounting, and structural components from concept to manufactured part.<br>- Stress analysis and FEA to validate designs against real operating loads (vibration, shock, recoil, thermal) before they go to the field.<br>- Motor and drivetrain selection/integration — torque, backlash, and structural stiffness that meet positioning accuracy requirements.<br>- Closing the loop with test data: taking field/bench failures and turning them into design revisions.<br><br><strong>You'll thrive here if</strong> you've built things in SAE (Baja/Formula Student) or similar hands-on teams, you're comfortable owning a physical system end-to-end, and you like the CAD-to-machine-shop-to-field loop.",
 					mustHave: [
-						"Strong hands-on experience with visual odometry, VIO, or SLAM in a real (not purely academic) setting.",
-						"Solid state-estimation fundamentals: Kalman/extended Kalman filtering, sensor fusion, coordinate frames, time synchronization.",
-						"Proficient in C++ and/or Python for real-time estimation code.",
-						"Comfortable working from flight/field logs: quantifying error against a ground-truth reference."
+						"Strong hands-on CAD experience (SolidWorks/Fusion/CATIA or similar) on real, built (not purely academic) hardware.",
+						"Solid grasp of stress analysis/FEA fundamentals: load cases, factors of safety, material selection.",
+						"Experience designing around electric motors — mounting, torque transmission, drivetrain integration.",
+						"Comfortable working from prototype through iteration: fit checks, failures, and redesign based on test data."
 					],
 					niceToHave: [
-						"ArduPilot / PX4 internals, especially EKF3.",
-						"Experience on constrained compute (Raspberry Pi / Jetson-class).",
-						"Lidar/rangefinder integration; camera-IMU calibration.",
-						"Any background in GPS-denied, contested, or defense/UAS navigation."
+						"SAE Baja/Formula Student or similar competition team experience.",
+						"Experience with gimbals, mounts, or precision actuation mechanisms.",
+						"Exposure to vibration/shock analysis or dynamic loading.",
+						"Any background in defense, aerospace, or field-deployed hardware."
 					],
-					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware and flight/field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
-					emailSubject: "Senior Engineer — Visual / Inertial State Estimation Application"
+					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware iteration and field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
+					emailSubject: "Mechanical / Powertrain Design Engineer Application"
 				},
 				{
-					title: "Engineer — Embedded + Computer Vision / Map-Matching",
-					category: "SOFTWARE",
-					location: "HYDERABAD",
-					shortDesc: "Make the navigation payload run for real and own the map-matching pipeline.",
-					about: "You make the navigation payload run for real — on the actual hardware, in real time — and you own the piece that bounds long-range drift: matching what the camera sees against a reference map to get absolute position fixes.<br><br><strong>What you'll own:</strong><br>- The embedded / real-time side: getting optical flow, lidar, and camera pipelines running within the timing and power budget of a Raspberry Pi / Jetson-class board.<br>- Sensor time-synchronization across camera, IMU, and lidar — the detail that quietly makes or breaks accuracy.<br>- The map-matching pipeline: registering the downward camera frame against a satellite/aerial basemap to produce absolute fixes that reset accumulated drift at higher altitude — handling scale, rotation, illumination, and seasonal differences.<br>- Building and maintaining the reference-tile / basemap data pipeline.<br><br><strong>You'll thrive here if</strong> you like living where software meets hardware, enjoy chasing down a millisecond of timing skew, and want to own a whole subsystem rather than a ticket queue.",
-					mustHave: [
-						"Strong Python and/or C++, comfortable on embedded Linux.",
-						"Practical computer vision: feature detection/matching, image registration, OpenCV.",
-						"Experience getting vision or sensor code to run in real time on constrained hardware."
-					],
-					niceToHave: [
-						"Geospatial / satellite imagery experience (tiling, geo-registration, GDAL).",
-						"Camera drivers, GStreamer, hardware time-sync, IMU integration.",
-						"Exposure to learned feature matching / lightweight on-device models.",
-						"Drone / robotics build experience."
-					],
-					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware and flight/field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
-					emailSubject: "Engineer — Embedded + Computer Vision / Map-Matching Application"
-				},
-				{
-					title: "Senior Mechatronics Engineer — Artillery Automation",
+					title: "Embedded Systems Engineer",
 					category: "HARDWARE",
 					location: "HYDERABAD",
-					shortDesc: "Lead the mechanical and drive design for our gun-automation product.",
-					about: "You lead the mechanical and drive design for our gun-automation product — retrofitting motorized, closed-loop laying onto existing towed artillery. This is heavy, real-world mechatronics where things must survive recoil, vibration, dust, and field abuse.<br><br><strong>What you'll own:</strong><br>- End-to-end mechanical design of the azimuth and elevation drive retrofit: CAD, mounting and bracketry, and integration onto the existing gun structure.<br>- Sizing the drivetrain: slew-torque calculations, gearbox and motor selection, industrial servo-drive specification, encoder/resolver selection.<br>- Design for the real environment — recoil loads, vibration, environmental sealing — and for manufacturability of machined parts.<br>- Working with vendors and machine shops to get prototype parts made, and being hands-on during assembly and trials.<br><br><strong>You'll thrive here if</strong> you want to own a whole hardware product line from CAD to a working prototype on a real gun, and you're energized (not scared) by moving multi-tonne systems safely and precisely.",
+					shortDesc: "You'll design and debug PCBs, get multiple microcontrollers talking to each other and to sensors, and integrate a computer vision pipeline into the embedded stack. Ideal if you've built real hardware — CubeSats, drones, or similar — not just breadboard demos.",
+					about: "This is the core embedded hire for our sensing and compute stack. You will own the hardware and firmware that lets our platform's cameras, sensors, and compute talk to each other reliably in the field.<br><br><strong>What you'll own:</strong><br>- PCB design and bring-up — schematic, layout, and debugging boards from first power-on to field-ready.<br>- Getting sensors, cameras, and multiple microcontrollers communicating cleanly over UART, CAN, I2C, and SPI.<br>- Integrating a computer vision pipeline into the embedded stack — from camera capture to compute to output, on constrained hardware.<br>- Diagnosing and fixing signal integrity, timing, and reliability issues that only show up on real hardware in the field.<br><br><strong>You'll thrive here if</strong> you've worked on a CubeSat or similar hands-on team, you're comfortable being the person who debugs a board at 2 AM, and you want ownership of a hard hardware problem in a tiny team.",
 					mustHave: [
-						"Strong 3D CAD (SolidWorks or equivalent) and mechanical design fundamentals.",
-						"Real experience with motorized motion systems: servo drives, gearboxes, torque/load sizing.",
-						"Design-for-manufacture instinct and comfort working directly with fabrication vendors.",
-						"Willingness to be in the workshop and in the field, not just at a desk."
+						"Strong hands-on PCB design experience — schematic capture, layout, and bring-up of real boards.",
+						"Proficient working across UART, CAN, I2C, and SPI, and comfortable debugging at the signal level (scope/logic analyzer).",
+						"Experience with multiple microcontroller families (e.g., STM32, ESP32, PIC, etc.).",
+						"Some experience integrating computer vision on embedded/constrained compute (Raspberry Pi/Jetson-class or similar)."
 					],
 					niceToHave: [
-						"Experience with heavy machinery, industrial automation, robotics, or defense hardware.",
-						"Familiarity with encoders/resolvers, motor controllers, and closed-loop motion control.",
-						"Knowledge of Indian defense procurement / trials processes (iDEX, TDF, DPSU partnerships).",
-						"Awareness of safety-critical design and interlock requirements."
+						"CubeSat or satellite team experience.",
+						"Experience with camera modules and vision pipelines on embedded hardware.",
+						"RTOS experience or bare-metal firmware development.",
+						"Any background in defense, aerospace, or field-deployed embedded systems."
 					],
-					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware and flight/field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
-					emailSubject: "Senior Mechatronics Engineer — Artillery Automation Application"
-				},
-				{
-					title: "Operations & Admin Associate",
-					category: "OPERATIONS",
-					location: "HYDERABAD",
-					shortDesc: "Keep a five-person defense startup running so the engineers can build.",
-					about: "You keep a five-person defense startup running so the engineers can build. Small role, high leverage.<br><br><strong>What you'll own:</strong><br>- Procurement and vendor coordination — chasing quotes, POs, and deliveries for both electronics and machined hardware.<br>- Compliance and paperwork: company filings, basic bookkeeping coordination with our accountant, and the documentation trail that defense work demands.<br>- Logistics: shipments, travel and trial logistics, workspace and inventory.<br>- General founder support — keeping the operational plates spinning.<br><br><strong>You'll thrive here if</strong> you like being the person who makes everything actually happen, and want a broad ops role with room to grow as the company scales.",
-					mustHave: [
-						"Highly organized, reliable, and proactive; comfortable owning things end-to-end without hand-holding.",
-						"Good written communication and comfort with spreadsheets / basic tools.",
-						"Discretion — you'll be around sensitive work."
-					],
-					niceToHave: [
-						"Prior startup or ops/admin experience.",
-						"Familiarity with procurement, GST/compliance basics, or defense/government paperwork."
-					],
-					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware and flight/field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
-					emailSubject: "Operations & Admin Associate Application"
+					notes: "<strong>Location:</strong> Hyderabad, on-site (hardware bring-up and field testing require physical presence).<br>Given the defense nature of the work, <strong>Indian citizenship is required</strong>, and candidates should be comfortable with the security, confidentiality, and eventual clearance/vetting expectations that come with government and armed-forces trials.<br>Compensation is <strong>below-market cash + meaningful ESOP</strong> (4-year vest, 1-year cliff).",
+					emailSubject: "Embedded Systems Engineer Application"
 				}
 			];
 

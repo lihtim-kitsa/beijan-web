@@ -76,9 +76,9 @@ export default function HomePage() {
 					<a href="#about" id="nav-about">
 						ABOUT
 					</a>
-					<a href="#tactical" id="nav-tactical">
+					{/* <a href="#tactical" id="nav-tactical">
 						LOCATIONS
-					</a>
+					</a> */}
 					<a href="/banm" id="nav-banm">
 						BANM
 					</a>
@@ -391,7 +391,7 @@ export default function HomePage() {
 			</section>
 
 			{/* ===== TACTICAL MAP PANEL ===== */}
-			<TacticalSection />
+			{/* <TacticalSection /> */}
 
 			{/* ===== PRODUCTS (SCROLL TO REVEAL) ===== */}
 			<section id="products">

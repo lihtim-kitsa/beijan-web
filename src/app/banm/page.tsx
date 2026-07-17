@@ -138,7 +138,7 @@ export default function BanmPage() {
 			<section
 				ref={scrollContainerRef}
 				className="relative w-full"
-				style={{ height: "800vh" }} // 8x viewport height (4x for animation, 4x for features)
+				style={{ height: "900vh" }} // 9x viewport height (4x for animation, 5x for features & spacer)
 			>
 				<div className="sticky top-0 w-full h-screen overflow-hidden bg-[#0b0b0b]">
 					{/* Grid Overlay Texture */}
@@ -146,9 +146,6 @@ export default function BanmPage() {
 
 					{/* The Canvas */}
 					<FrameSequenceCanvas />
-
-					{/* Callouts (Data overlays) */}
-					<FeatureCallouts />
 
 					{/* Global progress bar */}
 					<div className="absolute top-24 right-8 w-1 h-32 bg-white/10 z-20 rounded-full hidden md:block">
@@ -165,29 +162,38 @@ export default function BanmPage() {
 					<div style={{ height: "400vh" }}></div>
 
 					{/* Feature 1 */}
-					<div className="h-screen flex flex-col justify-center px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-1">
-						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-4 uppercase">COMP-01 // FOV</h3>
-						<h2 className="font-sans text-5xl md:text-7xl font-bold uppercase mb-6 leading-none">WIDE ANGLE FIELD OF VIEW</h2>
-						<p className="font-sans text-lg text-white/70 leading-relaxed max-w-lg">
-							RasPi Cam 3 NoIR Wide, which provides a 120 degree field of view, ensuring the BANM can see everything in front of it.
+					<div className="h-screen flex flex-col justify-end md:justify-center pb-32 md:pb-0 px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-1">
+						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-3 md:mb-4 uppercase">STATE 01</h3>
+						<h2 className="font-sans text-4xl md:text-7xl font-bold uppercase mb-4 md:mb-6 leading-none">GPS NOMINAL</h2>
+						<p className="font-sans text-base md:text-lg text-white/70 leading-relaxed max-w-lg">
+							Drone flies its planned mission normally. BANM observes and builds a continuous visual track.
 						</p>
 					</div>
 
 					{/* Feature 2 */}
-					<div className="h-screen flex flex-col justify-center px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-2">
-						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-4 uppercase">SENS-04 // IMU ARRAY</h3>
-						<h2 className="font-sans text-5xl md:text-7xl font-bold uppercase mb-6 leading-none">TACTICAL-GRADE NAVIGATION</h2>
-						<p className="font-sans text-lg text-white/70 leading-relaxed max-w-lg">
-							Precision inertial navigation ensuring sustained operations in heavily contested, GPS-denied environments. Drift rate: &lt; 0.1 DEG/HR.
+					<div className="h-screen flex flex-col justify-end md:justify-center pb-32 md:pb-0 px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-2">
+						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-3 md:mb-4 uppercase">STATE 02</h3>
+						<h2 className="font-sans text-4xl md:text-7xl font-bold uppercase mb-4 md:mb-6 leading-none">GPS JAMMED</h2>
+						<p className="font-sans text-base md:text-lg text-white/70 leading-relaxed max-w-lg">
+							Signal is lost or spoofed. Instead of failing, BANM takes over as the position source.
 						</p>
 					</div>
 
 					{/* Feature 3 */}
-					<div className="h-screen flex flex-col justify-center px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-3">
-						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-4 uppercase">PWR-02 // THERMAL CORE</h3>
-						<h2 className="font-sans text-5xl md:text-7xl font-bold uppercase mb-6 leading-none">ACTIVE THERMAL MANAGEMENT</h2>
-						<p className="font-sans text-lg text-white/70 leading-relaxed max-w-lg">
-							Advanced cooling systems sustaining continuous high-performance operations up to 60°C ambient temperatures.
+					<div className="h-screen flex flex-col justify-end md:justify-center pb-32 md:pb-0 px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-3">
+						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-3 md:mb-4 uppercase">STATE 03</h3>
+						<h2 className="font-sans text-4xl md:text-7xl font-bold uppercase mb-4 md:mb-6 leading-none">DEAD RECKONING</h2>
+						<p className="font-sans text-base md:text-lg text-white/70 leading-relaxed max-w-lg">
+							Its system estimates motion frame-to-frame, holding the aircraft on course — even in low light.
+						</p>
+					</div>
+
+					{/* Feature 4 */}
+					<div className="h-screen flex flex-col justify-end md:justify-center pb-32 md:pb-0 px-8 md:px-24 max-w-2xl pointer-events-auto feature-block" data-id="loc-4">
+						<h3 className="font-mono text-sm tracking-[0.2em] text-[var(--red)] mb-3 md:mb-4 uppercase">STATE 04</h3>
+						<h2 className="font-sans text-4xl md:text-7xl font-bold uppercase mb-4 md:mb-6 leading-none">GPS RESTORED</h2>
+						<p className="font-sans text-base md:text-lg text-white/70 leading-relaxed max-w-lg">
+							Signal returns and BANM hands back seamlessly. The mission resumes without operator input.
 						</p>
 					</div>
 
@@ -196,96 +202,90 @@ export default function BanmPage() {
 				</div>
 			</section>
 
-			{/* SECTION C: SPEC SHEET */}
-			<section className="bg-[#0b0b0b] text-white border-t border-white/10" id="specs">
-				<div className="max-w-7xl mx-auto px-8 md:px-16 w-full">
-					<div style={{ padding: "120px 0 40px" }}>
+			{/* SECTION VARIANTS: CONFIGURATIONS */}
+			<section className="bg-[#0b0b0b] text-white border-t border-white/10" id="variants">
+				<div className="w-full px-6 md:px-24 lg:px-32 xl:px-48">
+					<div className="flex justify-center text-center pt-24 md:pt-32 pb-10">
 						<div className="section-eyebrow">
-							TECHNICAL SPECIFICATIONS
+							CONFIGURATIONS — THREE VARIANTS
 						</div>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-x border-white/10 mb-32">
-						{/* Block 1 */}
-						<div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10">
-							<div className="font-mono text-[var(--red)] text-[10px] font-bold tracking-widest mb-10 uppercase">
-								Physical
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
+						{/* VAR 01 */}
+						<div className="bg-[#f0ece5] text-[#1a1a1a] flex flex-col p-6 md:p-10 h-full" style={{ clipPath: "polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%)" }}>
+							<div className="flex justify-center items-center text-center">
+								<h3 className="font-sans text-[22px] md:text-[28px] font-semibold tracking-tight">VAR01: Dead Reckoning</h3>
 							</div>
-							<div className="space-y-6 font-mono text-xs">
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">Weight</span>
-									<span className="font-medium text-white/90">[SPEC] kg</span>
+
+							<div className="flex-1 flex flex-col justify-center items-center py-12 md:py-16">
+								<img src="/banm-var1.png" alt="VAR 01" className="w-full max-w-[200px] md:max-w-[260px] object-contain mix-blend-multiply drop-shadow-sm hover:scale-105 transition-transform duration-500" />
+							</div>
+
+							<div className="mt-auto space-y-0 text-center">
+								<div className="border-t border-black/20 pt-3 pb-5">
+									<div className="font-sans text-[10px] font-bold uppercase tracking-wide text-black/80 mb-[2px]">SURVIVAL</div>
+									<div className="font-sans text-sm text-black/60 leading-tight">Dead-reckoning Navigation</div>
 								</div>
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">Dimensions</span>
-									<span className="font-medium text-white/90">[SPEC] x [SPEC] mm</span>
+								<div className="border-t border-black/20 pt-3 pb-5">
+									<div className="font-sans text-[10px] font-bold uppercase tracking-wide text-black/80 mb-[2px]">HANDOFF</div>
+									<div className="font-sans text-sm text-black/60 leading-tight">Seamless GPS Handoff</div>
 								</div>
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">Mounting</span>
-									<span className="font-medium text-white/90">Standard NATO Rack</span>
+								<div className="border-t border-black/20 pt-3 pb-5 border-b">
+									<div className="font-sans text-[10px] font-bold uppercase tracking-wide text-black/80 mb-[2px]">STORAGE</div>
+									<div className="font-sans text-sm text-black/60 leading-tight">Flight Video + Telemetry Recordings</div>
 								</div>
 							</div>
 						</div>
 
-						{/* Block 2 */}
-						<div className="p-8 md:p-12 border-b md:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
-							<div className="font-mono text-[var(--red)] text-[10px] font-bold tracking-widest mb-10 uppercase">
-								Compute & Nav
+						{/* VAR 02 */}
+						<div className="bg-[#f0ece5] text-[#1a1a1a] flex flex-col p-6 md:p-10 h-full" style={{ clipPath: "polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%)" }}>
+							<div className="flex justify-center items-center text-center">
+								<h3 className="font-sans text-[22px] md:text-[28px] font-semibold tracking-tight">VAR02: DR + Map Matching</h3>
 							</div>
-							<div className="space-y-6 font-mono text-xs">
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">Processing</span>
-									<span className="font-medium text-white/90">40 TOPS NPU</span>
+
+							<div className="flex-1 flex flex-col justify-center items-center py-12 md:py-16">
+								<img src="/banm-var2.png" alt="VAR 02" className="w-full max-w-[200px] md:max-w-[260px] object-contain mix-blend-multiply drop-shadow-sm hover:scale-105 transition-transform duration-500" />
+							</div>
+
+							<div className="mt-auto space-y-0 text-center">
+								<div className="border-t border-black/20 pt-3 pb-5">
+									<div className="font-sans text-[10px] font-bold uppercase tracking-wide text-black/80 mb-[2px]">BASE</div>
+									<div className="font-sans text-sm text-black/60 leading-tight">All Var 01 Capabilities</div>
 								</div>
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">GNSS Denied</span>
-									<span className="font-medium text-white/90">VIO + IMU fused</span>
+								<div className="border-t border-black/20 pt-3 pb-5">
+									<div className="font-sans text-[10px] font-bold uppercase tracking-wide text-black/80 mb-[2px]">CORRECTION</div>
+									<div className="font-sans text-sm text-black/60 leading-tight">Offline Satellite Map Matching</div>
 								</div>
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">Drift Rate</span>
-									<span className="font-medium text-white/90">[SPEC] %</span>
+								<div className="border-t border-black/20 pt-3 pb-5 border-b">
+									<div className="font-sans text-[10px] font-bold uppercase tracking-wide text-black/80 mb-[2px]">POSITION FIX</div>
+									<div className="font-sans text-sm text-black/60 leading-tight">Absolute Position & Drift Fix</div>
 								</div>
 							</div>
 						</div>
 
-						{/* Block 3 */}
-						<div className="p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-white/10">
-							<div className="font-mono text-[var(--red)] text-[10px] font-bold tracking-widest mb-10 uppercase">
-								Sensors
+						{/* VAR 03 */}
+						<div className="bg-[#f0ece5] text-[#1a1a1a] flex flex-col p-6 md:p-10 h-full" style={{ clipPath: "polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%)" }}>
+							<div className="flex justify-center items-center text-center">
+								<h3 className="font-sans text-[22px] md:text-[28px] font-semibold tracking-tight">VAR03: Autonomous + AI</h3>
 							</div>
-							<div className="space-y-6 font-mono text-xs">
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">EO/IR</span>
-									<span className="font-medium text-white/90">4K / LWIR</span>
-								</div>
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">Rangefinder</span>
-									<span className="font-medium text-white/90">[SPEC] km range</span>
-								</div>
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">Refresh Rate</span>
-									<span className="font-medium text-white/90">60 Hz pipeline</span>
-								</div>
-							</div>
-						</div>
 
-						{/* Block 4 */}
-						<div className="p-8 md:p-12 bg-white/[0.02]">
-							<div className="font-mono text-[var(--red)] text-[10px] font-bold tracking-widest mb-10 uppercase">
-								Environmental
+							<div className="flex-1 flex flex-col justify-center items-center py-12 md:py-16">
+								<img src="/banm-var3.png" alt="VAR 03" className="w-full max-w-[200px] md:max-w-[260px] object-contain mix-blend-multiply drop-shadow-sm hover:scale-105 transition-transform duration-500" />
 							</div>
-							<div className="space-y-6 font-mono text-xs">
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">Operating Temp</span>
-									<span className="font-medium text-white/90">-40°C to +60°C</span>
+
+							<div className="mt-auto space-y-0 text-center">
+								<div className="border-t border-black/20 pt-3 pb-5">
+									<div className="font-sans text-[10px] font-bold uppercase tracking-wide text-black/80 mb-[2px]">BASE</div>
+									<div className="font-sans text-sm text-black/60 leading-tight">All Var 02 Capabilities</div>
 								</div>
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">IP Rating</span>
-									<span className="font-medium text-white/90">IP67 sealed</span>
+								<div className="border-t border-black/20 pt-3 pb-5">
+									<div className="font-sans text-[10px] font-bold uppercase tracking-wide text-black/80 mb-[2px]">MISSIONS</div>
+									<div className="font-sans text-sm text-black/60 leading-tight">Autonomous Smart Missions</div>
 								</div>
-								<div className="flex flex-col gap-1 border-b border-white/10 pb-3">
-									<span className="opacity-40 uppercase tracking-widest text-[9px]">EMI/EMC</span>
-									<span className="font-medium text-white/90">MIL-STD-461G</span>
+								<div className="border-t border-black/20 pt-3 pb-5 border-b">
+									<div className="font-sans text-[10px] font-bold uppercase tracking-wide text-black/80 mb-[2px]">TRACKING</div>
+									<div className="font-sans text-sm text-black/60 leading-tight">AI Target Tracking</div>
 								</div>
 							</div>
 						</div>
@@ -293,9 +293,10 @@ export default function BanmPage() {
 				</div>
 			</section>
 
+
 			{/* SECTION D: CTA */}
 			<section className="bg-[#121212] text-white border-t border-white/10" id="contact">
-				<div style={{ padding: "120px 40px 0" }}>
+				<div className="pt-24 md:pt-[120px] px-8 md:px-10">
 					<div className="section-eyebrow">
 						CONTACT
 					</div>
